@@ -2,7 +2,7 @@
 TARGET_COLUMN = "Churn"
 TRAIN_PIPELINE_NAME = "train_pipeline"
 ARTIFACT_DIR = "artifact"
-FILE_NAME = "training_data"
+FILE_NAME = "training_data.csv"
 
 TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME = "test.csv"
