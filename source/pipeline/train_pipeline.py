@@ -1,5 +1,7 @@
 from source.component.train_data_ingestion import DataIngestion
 from source.entity.config_entity import TrainingPipelineConfig
+
+
 class TrainPipeline:
 
     def __init__(self, global_timestamp):

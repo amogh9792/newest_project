@@ -9,9 +9,9 @@ class TrainingPipelineConfig:
         self.target_column = constant_train.TARGET_COLUMN
         self.train_pipeline = constant_train.TRAIN_PIPELINE_NAME
 
+        # Data Ingestion constant
         self.di_dir = os.path.join(self.artifact_dir, constant_train.DI_DIR_NAME)
         self.feature_store_dir_path = os.path.join(self.di_dir, constant_train.DI_FEATURE_STORE_DIR, constant_train.FILE_NAME)
-        #self.file_name = constant_train.FILE_NAME
         self.train_file_path = os.path.join(self.di_dir, constant_train.DI_INGESTED_DIR, constant_train.TRAIN_FILE_NAME)
         self.test_file_path = os.path.join(self.di_dir, constant_train.DI_INGESTED_DIR, constant_train.TEST_FILE_NAME)
         self.train_test_split_ratio = constant_train.DI_TRAIN_TEST_SPLIT_RATIO
