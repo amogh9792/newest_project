@@ -51,6 +51,62 @@ class DataIngestion:
         except ChurnException as e:
             raise e
 
+    def clean_data(self, data):
+        try:
+
+            logging.info("Start clean data")
+
+            data = data.drop_duplicates()
+
+            data = data.loc[:, data.nunique() > 1]
+
+            drop_column = []
+
+            for col in data.select_dtypes(include = ['object']).columns:
+
+                unique_count = data[col].nunique()
+
+                if unique_count / len(data) > 0.5:
+
+                    data.drop(col, axis = 1, inplace = True)
+                    drop_column.append(col)
+
+            logging.info(f"Dropped columns : {drop_column}")
+            logging.info("Complete data clean")
+
+            return data
+        
+        except ChurnException as e:
+            raise e
+
+    def process_data(self, data):
+        try:
+
+            logging.info("Start process data")
+
+            for col in self.train_config.mandatory_col_list:
+
+                if col not in data.columns:
+                    
+                    raise ChurnException(f'Missing Mandatory Column{col}')
+
+                if data[col].dtype != self.train_config.mandatory_col_data_type[col]:
+                    try:
+                        data[col] = data[col].astype(self.train_config.mandatory_col_data_type[col])
+
+                    except ValueError as e: 
+                    
+                        raise ChurnException(f"ERROR: Converting data type for column: {col}")
+        
+            logging.info("Stop : Process data")
+
+            return data
+
+        except ChurnException as e:
+            raise e
+
     def initiate_data_ingestion(self):
         data = self.export_data_into_feature_store()
+        data = self.clean_data(data)
+        data = self.process_data(data)
         self.split_data_test_train(data)
