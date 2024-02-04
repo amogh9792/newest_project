@@ -1,0 +1,21 @@
+,imputation_value
+tenure,29.0
+MonthlyCharges,70.525
+TotalCharges,1410.8
+gender,Male
+SeniorCitizen,0
+Partner,No
+Dependents,No
+PhoneService,Yes
+MultipleLines,No
+InternetService,Fiber optic
+OnlineSecurity,No
+OnlineBackup,No
+DeviceProtection,No
+TechSupport,No
+StreamingTV,No
+StreamingMovies,No
+Contract,Month-to-month
+PaperlessBilling,Yes
+PaymentMethod,Electronic check
+Churn,No

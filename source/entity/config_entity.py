@@ -20,3 +20,7 @@ class TrainingPipelineConfig:
         self.collection_name = constant_train.DI_COLLECTION_NAME
         self.mandatory_col_list = constant_train.DI_MANDATORY_COLUMN_LIST
         self.mandatory_col_data_type = constant_train.DI_MANDATORY_COLUMN_DATA_TYPE
+
+        # Data validation
+
+        self.imputation_values_file = constant_train.DV_IMPUTATION_VALUES_FILE_NAME
