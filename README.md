@@ -1,8 +1,8 @@
 Create conda environment 
 ``` 
-conda create -p venv python=3.10 -y 
+conda create -p virtual_environment python=3.10 -y 
 ``` 
-Activate conda environment: venv 
+Activate conda environment: virtual_environment 
 ``` 
 activate ./venv 
 ``` 

@@ -11,3 +11,4 @@ def generate_global_timestamp():
         global_timestamp = datetime.now().strftime("%m_%d_%Y_%H_%M_%S")
 
     return global_timestamp
+ 

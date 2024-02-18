@@ -1,3 +1,5 @@
+
+
 # Common constants
 TARGET_COLUMN = 'Churn'
 TRAIN_PIPELINE_NAME = 'train_pipeline'
@@ -40,3 +42,4 @@ DV_DIR_NAME = "data_validation"
 DT_MULTI_CLASS_COL = ['MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaymentMethod']
 DT_BINARY_CLASS_COL = ['Partner', 'Dependents', 'PhoneService', 'PaperlessBilling', 'gender']
 DT_ENCODER_PATH = 'source/ml/multi_class_encoder.pkl'
+DT_DIR_NAME: str = "data_transformation"

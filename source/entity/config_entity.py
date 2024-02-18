@@ -36,3 +36,5 @@ class TrainingPipelineConfig:
         self.dt_binary_class_col = constant_train.DT_BINARY_CLASS_COL
         self.dt_multi_class_col = constant_train.DT_MULTI_CLASS_COL
         self.dt_multi_class_encoder = constant_train.DT_ENCODER_PATH
+        self.dt_train_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)
+        self.dt_test_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)

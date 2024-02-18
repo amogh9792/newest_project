@@ -1,3 +1,5 @@
+# The `DataIngestion` class is responsible for ingesting data from MongoDB, cleaning and processing
+# the data, and splitting it into train and test sets.
 import os
 import pandas as pd
 from pandas import DataFrame
