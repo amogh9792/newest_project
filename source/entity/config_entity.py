@@ -42,3 +42,5 @@ class TrainingPipelineConfig:
         # Model Train And Evaluate 
 
         self.model_path = os.path.join(constant_train.MODEL_PATH)
+        self.final_model_path = os.path.join(constant_train.FINAL_MODEL_PATH)
+        

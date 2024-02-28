@@ -47,3 +47,4 @@ DT_DIR_NAME: str = "data_transformation"
 # Model Train And Evaluate
 
 MODEL_PATH = "source/ml/artifact"
+FINAL_MODEL_PATH = "source/ml/final_model"
