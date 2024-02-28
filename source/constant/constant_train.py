@@ -43,3 +43,7 @@ DT_MULTI_CLASS_COL = ['MultipleLines', 'InternetService', 'OnlineSecurity', 'Onl
 DT_BINARY_CLASS_COL = ['Partner', 'Dependents', 'PhoneService', 'PaperlessBilling', 'gender']
 DT_ENCODER_PATH = 'source/ml/multi_class_encoder.pkl'
 DT_DIR_NAME: str = "data_transformation"
+
+# Model Train And Evaluate
+
+MODEL_PATH = "source/ml/artifact"

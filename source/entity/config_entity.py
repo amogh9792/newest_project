@@ -38,3 +38,7 @@ class TrainingPipelineConfig:
         self.dt_multi_class_encoder = constant_train.DT_ENCODER_PATH
         self.dt_train_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)
         self.dt_test_file_path = os.path.join(self.artifact_dir, constant_train.DT_DIR_NAME)
+
+        # Model Train And Evaluate 
+
+        self.model_path = os.path.join(constant_train.MODEL_PATH)

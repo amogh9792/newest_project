@@ -1,11 +1,13 @@
 import os
 import pandas as pd
 import pickle
-from sklearn.preprocessing import MinMaxScaler
 import category_encoders as ce
+import warnings
+from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import MinMaxScaler
 from source.exception import ChurnException
 from source.logger import logging
-import warnings
+
 warnings.filterwarnings('ignore')
 
 
@@ -87,6 +89,21 @@ class DataTransformation:
 
         return data
 
+    def oversample_smote(self, data):
+        try:
+
+            x = data.drop(columns=['Churn'])
+            y = data['Churn']
+
+            smote = SMOTE()
+
+            x_resmapled, y_resampled = smote.fit_resample(x, y)
+
+            return pd.concat([pd.DataFrame(x_resmapled, columns=x.columns), pd.DataFrame(y_resampled, columns=['Churn'])], axis=1)
+
+        except ChurnException as e:
+            raise e
+
     def export_data_file(self, data, file_name, path):
         try:
 
@@ -95,7 +112,7 @@ class DataTransformation:
 
             data.to_csv(path+'\\'+file_name, index=False)
 
-            logging.info('data transformation files exported')
+            logging.info('data transformation file exported')
 
         except ChurnException as e:
             raise e
@@ -116,7 +133,7 @@ class DataTransformation:
         test_data.drop('Churn', axis=1, inplace=True)
         test_data = self.min_max_scaling(test_data, type='test')
 
+        train_data = self.oversample_smote(train_data)
+
         self.export_data_file(train_data, self.utlity_config.train_file_name,  self.utlity_config.dt_train_file_path)
         self.export_data_file(test_data, self.utlity_config.test_file_name, self.utlity_config.dt_test_file_path)
-
-        print('done')

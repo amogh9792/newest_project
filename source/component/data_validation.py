@@ -108,5 +108,3 @@ class DataValidation:
 
         self.export_data_file(train_data, self.utlity_config.train_file_name,  self.utlity_config.dv_train_file_path)
         self.export_data_file(test_data, self.utlity_config.test_file_name,self.utlity_config.dv_test_file_path)
-
-        print('done')
