@@ -10,24 +10,34 @@ from source.logger import logging
 
 
 class DataIngestion:
-    def __init__(self, train_config):
-        self.train_config = train_config
+    def __init__(self, utility_config):
+        self.utility_config = utility_config
 
-    def export_data_into_feature_store(self) -> DataFrame:
+    def export_data_into_feature_store(self, key) -> DataFrame:
         try:
             logging.info("start: data load from mongoDB")
 
-            client = MongoClient(self.train_config.mongodb_url_key)
-            database = client[self.train_config.database_name]
-            collection = database[self.train_config.collection_name]
+            if key == 'train':
+
+                collection_name = self.utility_config.train_collection_name
+                feature_store_file_path = self.utility_config.train_feature_store_dir_path
+            else:
+
+                collection_name = self.utility_config.predict_collection_name
+                feature_store_file_path = self.utility_config.predict_di_feature_store_file_path
+
+            client = MongoClient(self.utility_config.mongodb_url_key)
+            database = client[self.utility_config.database_name]
+
+            collection = database[self.utility_config.database_name]
 
             cursor = collection.find()
 
             data = pd.DataFrame(list(cursor))
 
-            dir_path = os.path.dirname(self.train_config.feature_store_dir_path)
+            dir_path = os.path.dirname(feature_store_file_path)
             os.makedirs(dir_path, exist_ok=True)
-            data.to_csv(self.train_config.feature_store_dir_path, index=False)
+            data.to_csv(feature_store_file_path, index=False)
 
             logging.info("complete: data load from mongoDB")
 
@@ -41,13 +51,13 @@ class DataIngestion:
         try:
             logging.info("start: train, test data split")
 
-            train_set, test_set = train_test_split(data, test_size=self.train_config.train_test_split_ratio, random_state=42)
+            train_set, test_set = train_test_split(data, test_size=self.utility_config.train_test_split_ratio, random_state=42)
 
-            dir_path = os.path.dirname(self.train_config.train_file_path)
+            dir_path = os.path.dirname(self.utility_config.train_file_path)
             os.makedirs(dir_path, exist_ok=True)
 
-            train_set.to_csv(self.train_config.train_file_path, index=False)
-            test_set.to_csv(self.train_config.test_file_path, index=False)
+            train_set.to_csv(self.utility_config.train_file_path, index=False)
+            test_set.to_csv(self.utility_config.test_file_path, index=False)
 
             logging.info("complete: train, test data split")
         except ChurnException as e:
@@ -84,14 +94,14 @@ class DataIngestion:
         try:
             logging.info("start: process data")
 
-            for col in self.train_config.mandatory_col_list:
+            for col in self.utility_config.mandatory_col_list:
 
                 if col not in data.columns:
                     raise ChurnException(f"missing mandatory column: {col}")
 
-                if data[col].dtype != self.train_config.mandatory_col_data_type[col]:
+                if data[col].dtype != self.utility_config.mandatory_col_data_type[col]:
                     try:
-                        data[col] = data[col].astype(self.train_config.mandatory_col_data_type[col])
+                        data[col] = data[col].astype(self.utility_config.mandatory_col_data_type[col])
                     except ValueError as e:
                         raise ChurnException(f"ERROR: converting data type for column: {col}")
 
@@ -102,8 +112,8 @@ class DataIngestion:
         except ChurnException as e:
             raise e
         
-    def initiate_data_ingestion(self):
-        data = self.export_data_into_feature_store()
+    def initiate_data_ingestion(self, key):
+        data = self.export_data_into_feature_store(key)
         data = self.clean_data(data)
         data = self.process_data(data)
         self.split_data_test_train(data)

@@ -1,16 +1,16 @@
-from source.component.train_data_ingestion import DataIngestion
+from source.component.data_ingestion import DataIngestion
 from source.component.data_validation import DataValidation
-from source.entity.config_entity import TrainingPipelineConfig
+from source.entity.config_entity import PipelineConfig
 from source.component.data_transformation import DataTransformation
 from source.component.model_train_evaluate import ModelTrainEvaluate
-class TrainPipeline:
+class DataPipeline:
 
     def __init__(self, global_timestamp):
-        self.utility_config = TrainingPipelineConfig(global_timestamp)
+        self.utility_config = PipelineConfig(global_timestamp)
 
-    def start_data_ingestion(self):
+    def start_data_ingestion(self, key):
         data_ingestion_obj = DataIngestion(self.utility_config)
-        data_ingestion_obj.initiate_data_ingestion()
+        data_ingestion_obj.initiate_data_ingestion(key)
 
 
     def start_data_validation(self):
@@ -21,13 +21,19 @@ class TrainPipeline:
         data_trans_obj = DataTransformation(self.utility_config)
         data_trans_obj.initiate_data_transformation()
 
-    def start_model_train_evauluate(self):
+    def start_model_train_evaluate(self):
         model_train_evaulate_obj = ModelTrainEvaluate(self.utility_config)
         model_train_evaulate_obj.initiate_model_training()
 
     def run_train_pipeline(self):
-        self.start_data_ingestion()
+        self.start_data_ingestion('train')
         self.start_data_validation()
         self.start_data_transformation()
-        self.start_model_train_evauluate()
+        self.start_model_train_evaluate()
+
+    def run_predict_pipeline(self):
+        self.start_data_ingestion('predict')
+        self.start_data_validation()
+        self.start_data_transformation()
+        self.start_model_train_evaluate()
         

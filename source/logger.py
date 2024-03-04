@@ -1,6 +1,6 @@
 import os
 import logging
-from source.constant.constant_train import ARTIFACT_DIR
+from source.constant.constant import ARTIFACT_DIR
 
 
 def setup_logger(global_timestamp):
