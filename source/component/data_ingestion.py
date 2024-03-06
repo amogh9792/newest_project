@@ -1,11 +1,10 @@
-# The `DataIngestion` class is responsible for ingesting data from MongoDB, cleaning and processing
-# the data, and splitting it into train and test sets.
 import os
 import pandas as pd
 from pandas import DataFrame
 from source.exception import ChurnException
 from pymongo.mongo_client import MongoClient
 from sklearn.model_selection import train_test_split
+from source.utility.utility import export_data_csv
 from source.logger import logging
 
 
@@ -18,19 +17,16 @@ class DataIngestion:
             logging.info("start: data load from mongoDB")
 
             if key == 'train':
-
                 collection_name = self.utility_config.train_collection_name
                 feature_store_file_path = self.utility_config.train_feature_store_dir_path
             else:
-
                 collection_name = self.utility_config.predict_collection_name
                 feature_store_file_path = self.utility_config.predict_di_feature_store_file_path
 
             client = MongoClient(self.utility_config.mongodb_url_key)
             database = client[self.utility_config.database_name]
 
-            collection = database[self.utility_config.database_name]
-
+            collection = database[collection_name]
             cursor = collection.find()
 
             data = pd.DataFrame(list(cursor))
@@ -63,6 +59,7 @@ class DataIngestion:
         except ChurnException as e:
             raise e
 
+
     def clean_data(self, data):
         try:
 
@@ -89,12 +86,18 @@ class DataIngestion:
         except ChurnException as e:
             raise e
 
-    def process_data(self, data):
-
+    def process_data(self, data, key):
         try:
             logging.info("start: process data")
 
-            for col in self.utility_config.mandatory_col_list:
+            if key == 'train':
+                mandatory_cols = self.utility_config.mandatory_col_list.copy()
+            else:
+                mandatory_cols = self.utility_config.mandatory_col_list.copy()
+                mandatory_cols.remove(self.utility_config.target_column)
+                data = data.drop(self.utility_config.di_col_drop_in_clean, axis=1)
+
+            for col in mandatory_cols:
 
                 if col not in data.columns:
                     raise ChurnException(f"missing mandatory column: {col}")
@@ -111,9 +114,18 @@ class DataIngestion:
 
         except ChurnException as e:
             raise e
-        
+
     def initiate_data_ingestion(self, key):
+
         data = self.export_data_into_feature_store(key)
-        data = self.clean_data(data)
-        data = self.process_data(data)
-        self.split_data_test_train(data)
+
+        if key == 'train':
+            data = self.clean_data(data)
+
+        data = self.process_data(data, key)
+
+        if key == 'train':
+            self.split_data_test_train(data)
+
+        if key == 'predict':
+            export_data_csv(data, self.utility_config.predict_file, self.utility_config.predict_file_path)

@@ -18,6 +18,8 @@ DI_DIR_NAME = 'data_ingestion'
 DI_FEATURE_STORE_DIR = 'feature_store'
 DI_INGESTED_DIR = 'ingested'
 DI_TRAIN_TEST_SPLIT_RATIO = 0.2
+DI_COL_DROP_IN_CLEAN = ['_id',	'customerID']
+
 DI_MANDATORY_COLUMN_LIST = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure',
                        'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',
                        'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV',
@@ -44,13 +46,13 @@ DT_BINARY_CLASS_COL = ['Partner', 'Dependents', 'PhoneService', 'PaperlessBillin
 DT_ENCODER_PATH = 'source/ml/multi_class_encoder.pkl'
 DT_DIR_NAME: str = "data_transformation"
 
-# Model Train And Evaluate
-
+# Model train & evaluate
 MODEL_PATH = "source/ml/artifact"
 FINAL_MODEL_PATH = "source/ml/final_model"
 
-# Prediction Constant
 
+# Prediction constant
 PREDICT_PIPELINE_NAME = 'predict'
 PREDICT_DATA_FILE_NAME = 'predict_data.csv'
-PREDICT_DI_COLLECTION_NAME = 'predict-telco-customer-churn'
+PREDICT_FILE = 'predict.csv'
+PREDICT_DI_COLLECTION_NAME = "predict-telco-customer-churn"
