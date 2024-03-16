@@ -1,4 +1,4 @@
-import os
+
 import pickle
 import pandas as pd
 import warnings
@@ -58,7 +58,7 @@ class ModelTrainEvaluate:
             "XGBClassifier": XGBClassifier()
         }
 
-        self.model_evaluation_report = pd.DataFrame(columns=["model_name","accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
+        self.model_evaluation_report = pd.DataFrame(columns=["model_name", "accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
 
     def model_training(self, train_data, test_data):
         try:
