@@ -94,9 +94,11 @@ class DataIngestion:
             if key == 'train':
                 mandatory_cols = self.utility_config.mandatory_col_list.copy()
 
-            if key == 'predict':
+            if key in ['predict', 'test']:
                 mandatory_cols = self.utility_config.mandatory_col_list.copy()
-                mandatory_cols.remove(self.utility_config.target_column)
+
+                mandatory_cols.remove('Churn')
+
                 data = data.drop(self.utility_config.di_col_drop_in_clean, axis=1)
 
             for col in mandatory_cols:

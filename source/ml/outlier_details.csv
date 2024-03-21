@@ -1,4 +1,4 @@
-tenure,MonthlyCharges,TotalCharges
-9.0,35.5,403.5625
-56.0,89.8,3799.6000000000004
-47.0,54.3,3396.0375000000004
+SeniorCitizen,tenure,MonthlyCharges,TotalCharges
+0.0,9.0,35.1,411.225
+0.0,56.0,89.7,3808.05
+0.0,47.0,54.6,3396.8250000000003
