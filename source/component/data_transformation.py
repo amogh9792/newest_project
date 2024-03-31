@@ -19,6 +19,7 @@ class DataTransformation:
 
     def feature_encoding(self, data, target, save_encoder_path=None, load_encoder_path=None, key=None):
 
+
         try:
             for col in self.utility_config.dt_binary_class_col:
                 data[col] = data[col].map({'Yes': 1, 'No': 0, 'Male': 1, 'Female': 0})
@@ -86,7 +87,7 @@ class DataTransformation:
                     data[col] = (data[col]-min) / (max-min)
 
                 else:
-                    print(f"No scaling detils available for feature: {col}")
+                    print(f"No scaling details available for feature: {col}")
 
             data['Churn'] = self.utility_config.target_column
 
@@ -138,6 +139,7 @@ class DataTransformation:
             self.utility_config.target_column = test_data['Churn']
             test_data.drop('Churn', axis=1, inplace=True)
             test_data = self.min_max_scaling(test_data, key='test')
+            test_data = test_data.iloc[:-3]
 
             train_data = self.oversample_smote(train_data)
 

@@ -58,10 +58,12 @@ class ModelTrainEvaluate:
             "XGBClassifier": XGBClassifier()
         }
 
-        self.model_evaluation_report = pd.DataFrame(columns=["model_name","accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
+        self.model_evaluation_report = pd.DataFrame(columns=["model_name", "accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
 
     def model_training(self, train_data, test_data):
+
         try:
+            test_data = test_data.iloc[:-3]
             x_train = train_data.drop('Churn', axis=1)
             y_train = train_data['Churn']
             test_data = test_data.drop(test_data.index[-2:])
