@@ -25,3 +25,9 @@ jobs:
       - name: Archive Project
         run: zip -r project.zip .
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+            name: project  # Artifact name
+            path: project.zip  # Path to the zip file
+
