@@ -41,5 +41,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: ./
-          DEST_DIR: "{{ github.run_id }}"
+          DEST_DIR: "${{ github.run_id }}"
 
