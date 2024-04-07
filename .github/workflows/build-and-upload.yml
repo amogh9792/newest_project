@@ -32,7 +32,7 @@ jobs:
             path: project.zip  # Path to the zip file
 
       - name: Upload to S3
-        uses: jakejarvis/s3-sync-action@0.5.0
+        uses: jakejarvis/s3-sync-action@v0.5.0
         with:
           args: --acl public-read --delete
         env:
