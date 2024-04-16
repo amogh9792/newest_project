@@ -1,0 +1,4 @@
+[2024-04-16 13:47:50,999] 13 INFO - logger timestamp setup complete
+[2024-04-16 13:47:51,000] 18 INFO - training pipeline config created
+[2024-04-16 13:47:51,000] 127 INFO - start: data ingestion
+[2024-04-16 13:47:51,001] 17 INFO - start: data load from mongoDB

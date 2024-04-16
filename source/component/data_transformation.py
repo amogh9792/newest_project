@@ -8,7 +8,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import MinMaxScaler
 from source.exception import ChurnException
 from source.logger import logging
-from source.utility.utility import export_data_csv, import_csv_file
+from source.utility.utility import export_data_csv, import_csv_file, read_csv_from_s3, upload_artifact_to_s3
 
 warnings.filterwarnings('ignore')
 
@@ -18,7 +18,6 @@ class DataTransformation:
         self.utility_config = utility_config
 
     def feature_encoding(self, data, target, save_encoder_path=None, load_encoder_path=None, key=None):
-
 
         try:
             for col in self.utility_config.dt_binary_class_col:
@@ -87,7 +86,7 @@ class DataTransformation:
                     data[col] = (data[col]-min) / (max-min)
 
                 else:
-                    print(f"No scaling details available for feature: {col}")
+                    print(f"No scaling detils available for feature: {col}")
 
             data['Churn'] = self.utility_config.target_column
 
@@ -139,7 +138,6 @@ class DataTransformation:
             self.utility_config.target_column = test_data['Churn']
             test_data.drop('Churn', axis=1, inplace=True)
             test_data = self.min_max_scaling(test_data, key='test')
-            test_data = test_data.iloc[:-3]
 
             train_data = self.oversample_smote(train_data)
 
@@ -147,8 +145,11 @@ class DataTransformation:
             export_data_csv(test_data, self.utility_config.test_file_name, self.utility_config.train_dt_test_file_path)
 
         if key == 'predict':
-            predict_data = import_csv_file(self.utility_config.predict_file, self.utility_config.predict_dv_file_path)
+
+            # predict_data = import_csv_file(self.utility_config.predict_file, self.utility_config.predict_dv_file_path)
+            predict_data = read_csv_from_s3(self.utility_config.aws_bucket_name, self.utility_config.predict_dv_file_path+'/'+self.utility_config.predict_file)
             predict_data = self.feature_encoding(predict_data, target='', load_encoder_path=self.utility_config.dt_multi_class_encoder, key='predict')
             predict_data = self.min_max_scaling(predict_data, key='predict')
 
-            export_data_csv(predict_data, self.utility_config.predict_file, self.utility_config.predict_dt_file_path)
+            # export_data_csv(predict_data, self.utility_config.predict_file, self.utility_config.predict_dt_file_path)
+            upload_artifact_to_s3(predict_data, self.utility_config.predict_file, self.utility_config.predict_dt_file_path, self.utility_config.aws_bucket_name)

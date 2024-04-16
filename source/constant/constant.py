@@ -1,9 +1,10 @@
-
+import os
 
 # Common constants
 TARGET_COLUMN = 'Churn'
 TRAIN_PIPELINE_NAME = 'train'
-ARTIFACT_DIR = 'artifact'
+# ARTIFACT_DIR = 'artifact'
+ARTIFACT_DIR = 'test-tcc-artifact'
 FILE_NAME = 'train_data.csv'
 
 TRAIN_FILE_NAME = 'train.csv'
@@ -59,3 +60,12 @@ PREDICT_FILE = 'predict.csv'
 PREDICT_DI_COLLECTION_NAME = "predict-telco-customer-churn"
 
 FINAL_MODEL_FILE_NAME = 'GradientBoostingClassifier.pkl'
+
+# AWS CONSTANT
+
+AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
+AWS_SECRET_KEY = os.environ['AWS_SECRET_KEY']
+AWS_REGION = os.environ['AWS_REGION']
+
+AWS_BUCKET_NAME = 'churn-bucket-name'
+AWS_BUCKET_PREFIX = 'test-tcc-artifact'

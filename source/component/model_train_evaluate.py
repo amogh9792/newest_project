@@ -21,8 +21,14 @@ def hyperparameter_tuning(x_train, y_train):
     try:
         model = GradientBoostingClassifier()
 
+        # param_grid = {
+        #     'loss': ['log_loss', 'exponential'],
+        #     'learning_rate': [0.01, 0.1, 0.5],
+        #     'n_estimators': [50, 100]
+        # }
+
         param_grid = {
-            'loss': ['log_loss', 'exponential'],
+            'loss': ['log_loss'],
             'learning_rate': [0.01],
             'n_estimators': [50]
         }
@@ -47,7 +53,7 @@ class ModelTrainEvaluate:
         self.utility_config = utility_config
 
         self.models = {
-            "LogisticRegression": LogisticRegression(),
+            # "LogisticRegression": LogisticRegression(),
             "SVC": SVC(),
             "DecisionTreeClassifier": DecisionTreeClassifier(),
             "RandomForestClassifier": RandomForestClassifier(),
@@ -58,12 +64,10 @@ class ModelTrainEvaluate:
             "XGBClassifier": XGBClassifier()
         }
 
-        self.model_evaluation_report = pd.DataFrame(columns=["model_name", "accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
+        self.model_evaluation_report = pd.DataFrame(columns=["model_name","accuracy", "precision", "recall", "f1", "class_report", "confu_matrix"])
 
     def model_training(self, train_data, test_data):
-
         try:
-            test_data = test_data.iloc[:-3]
             x_train = train_data.drop('Churn', axis=1)
             y_train = train_data['Churn']
             test_data = test_data.drop(test_data.index[-2:])
@@ -72,7 +76,7 @@ class ModelTrainEvaluate:
 
             # dir_path = os.path.dirname(self.utility_config.model_path)
             # os.makedirs(dir_path, exist_ok=True)
-
+            train_data.to_csv("train_data.csv", index=False)
             for name, model in self.models.items():
                 model.fit(x_train, y_train)
                 y_pred = model.predict(x_test)

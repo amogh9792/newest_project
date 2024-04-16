@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     pipeline_obj = DataPipeline(global_timestamp)
 
-    pipeline_obj.run_train_pipeline()
+    # pipeline_obj.run_train_pipeline()
     pipeline_obj.run_predict_pipeline()
 
     print('done')

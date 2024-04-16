@@ -4,6 +4,13 @@ from source.constant import constant
 
 class PipelineConfig:
     def __init__(self, global_timestamp):
+
+        self.aws_access_key = constant.AWS_ACCESS_KEY
+        self.aws_secret_key = constant.AWS_SECRET_KEY
+        self.aws_region = constant.AWS_REGION
+        self.aws_bucket_name = constant.AWS_BUCKET_NAME
+        self.aws_bucket_prefix = constant.AWS_BUCKET_PREFIX
+
         self.artifact_dir = os.path.join(constant.ARTIFACT_DIR, global_timestamp)
         self.global_timestamp = global_timestamp
         self.target_column = constant.TARGET_COLUMN

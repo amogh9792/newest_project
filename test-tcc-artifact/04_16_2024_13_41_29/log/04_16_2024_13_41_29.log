@@ -1,0 +1,5 @@
+[2024-04-16 13:41:29,312] 13 INFO - logger timestamp setup complete
+[2024-04-16 13:41:29,312] 18 INFO - training pipeline config created
+[2024-04-16 13:41:29,313] 127 INFO - start: data ingestion
+[2024-04-16 13:41:29,313] 17 INFO - start: data load from mongoDB
+[2024-04-16 13:43:08,460] 1278 INFO - Found credentials in shared credentials file: ~/.aws/credentials

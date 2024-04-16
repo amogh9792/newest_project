@@ -42,4 +42,4 @@ class DataPipeline:
         self.start_data_ingestion('predict')
         self.start_data_validation('predict')
         self.start_data_transformation('predict')
-        self.start_model_train_evaluate()
+        self.start_model_prediction()
