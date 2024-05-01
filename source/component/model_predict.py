@@ -1,3 +1,4 @@
+import logging
 import pickle
 import pymongo
 from pymongo import MongoClient
@@ -60,6 +61,8 @@ class ModelPrediction:
 
     def initiate_model_prediction(self):
 
+        logging.info("Start: Model prediction")
+
         # predict_data = import_csv_file(self.utility_config.predict_file, self.utility_config.predict_dt_file_path)
         predict_data = read_csv_from_s3(self.utility_config.aws_bucket_name, self.utility_config.predict_dt_file_path+'/'+self.utility_config.predict_file)
 
@@ -78,3 +81,5 @@ class ModelPrediction:
         # export_data_csv(feature_data, self.utility_config.predict_file, self.utility_config.predict_mp_file_path)
 
         upload_artifact_to_s3(feature_data, self.utility_config.predict_file, self.utility_config.predict_mp_file_path, self.utility_config.aws_bucket_name)
+
+        logging.info("Complete: Model Prediction")

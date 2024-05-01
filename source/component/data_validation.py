@@ -91,6 +91,8 @@ class DataValidation:
 
     def initiate_data_validation(self, key):
 
+        logging.info("Start: Data Validation")
+
         if key == 'train':
 
             train_data = import_csv_file(self.utility_config.train_file_name, self.utility_config.train_di_train_file_path)
@@ -114,3 +116,5 @@ class DataValidation:
 
             # export_data_csv(data, self.utility_config.predict_file, self.utility_config.predict_dv_file_path)
             upload_artifact_to_s3(data, self.utility_config.predict_file, self.utility_config.predict_dv_file_path, self.utility_config.aws_bucket_name)
+
+        logging.info("Complete: Data Validation")

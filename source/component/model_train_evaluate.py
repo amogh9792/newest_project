@@ -134,6 +134,8 @@ class ModelTrainEvaluate:
     def initiate_model_training(self):
         try:
 
+            logging.info("Start: Model Training and evaluation")
+
             train_data = pd.read_csv(self.utility_config.train_dt_train_file_path+'/'+self.utility_config.train_file_name, dtype={"TotalCharges": "float64"})
             test_data = pd.read_csv(self.utility_config.train_dt_test_file_path+'/'+self.utility_config.test_file_name, dtype={"TotalCharges": "float64"})
 
@@ -143,6 +145,8 @@ class ModelTrainEvaluate:
             self.retrain_final_model(train_data, test_data)
 
             print('model train done')
+
+            logging.info("Complete model training and evaluation")
 
         except ChurnException as e:
             raise e
