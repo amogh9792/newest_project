@@ -86,7 +86,7 @@ class DataTransformation:
                     data[col] = (data[col]-min) / (max-min)
 
                 else:
-                    print(f"No scaling detils available for feature: {col}")
+                    print(f"No scaling details available for feature: {col}")
 
             data['Churn'] = self.utility_config.target_column
 

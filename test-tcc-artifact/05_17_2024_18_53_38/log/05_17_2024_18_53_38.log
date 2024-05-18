@@ -1,0 +1,17 @@
+[2024-05-17 18:53:38,493] 31 INFO - START: MODEL PREDICTION
+[2024-05-17 18:53:38,493] 128 INFO - start: data ingestion
+[2024-05-17 18:53:38,493] 17 INFO - start: data load from mongoDB
+[2024-05-17 18:53:46,713] 1278 INFO - Found credentials in shared credentials file: ~/.aws/credentials
+[2024-05-17 18:53:48,188] 42 INFO - complete: data load from mongoDB
+[2024-05-17 18:53:48,188] 93 INFO - start: process data
+[2024-05-17 18:53:48,207] 118 INFO - complete: process data
+[2024-05-17 18:53:48,207] 66 INFO - start: clean data
+[2024-05-17 18:53:48,213] 84 INFO - complete: clean data
+[2024-05-17 18:53:48,953] 143 INFO - complete: data ingestion
+[2024-05-17 18:53:48,953] 94 INFO - Start: Data Validation
+[2024-05-17 18:53:50,182] 120 INFO - Complete: Data Validation
+[2024-05-17 18:53:50,182] 152 INFO - Start: Data Transformation for prediction
+[2024-05-17 18:53:52,399] 163 INFO - Complete: Data Transformation
+[2024-05-17 18:53:52,399] 64 INFO - Start: Model prediction
+[2024-05-17 18:54:04,161] 85 INFO - Complete: Model Prediction
+[2024-05-17 18:54:04,161] 39 INFO - END: MODEL PREDICTION

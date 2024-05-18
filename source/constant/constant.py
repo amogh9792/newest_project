@@ -1,5 +1,8 @@
 import os
 
+APP_POST = '0.0.0.0'
+APP_PORT = 8000
+
 # Common constants
 TARGET_COLUMN = 'Churn'
 TRAIN_PIPELINE_NAME = 'train'
@@ -67,5 +70,5 @@ AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
 AWS_SECRET_KEY = os.environ['AWS_SECRET_KEY']
 AWS_REGION = os.environ['AWS_REGION']
 
-AWS_BUCKET_NAME = 'churn-bucket-name'
+AWS_BUCKET_NAME = 'dev-tcc-bucket-s3'
 AWS_BUCKET_PREFIX = 'test-tcc-artifact'
