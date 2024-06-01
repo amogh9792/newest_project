@@ -70,5 +70,5 @@ AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
 AWS_SECRET_KEY = os.environ['AWS_SECRET_KEY']
 AWS_REGION = os.environ['AWS_REGION']
 
-AWS_BUCKET_NAME = 'dev-tcc-bucket-s3'
+AWS_BUCKET_NAME = 'deploy-telco-bucket'
 AWS_BUCKET_PREFIX = 'test-tcc-artifact'

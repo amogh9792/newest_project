@@ -1,0 +1,34 @@
+[2024-06-01 19:22:35,803] 31 INFO - START: MODEL TRAINING
+[2024-06-01 19:22:35,803] 128 INFO - start: data ingestion
+[2024-06-01 19:22:35,803] 17 INFO - start: data load from mongoDB
+[2024-06-01 19:22:41,701] 1278 INFO - Found credentials in shared credentials file: ~/.aws/credentials
+[2024-06-01 19:22:42,727] 42 INFO - complete: data load from mongoDB
+[2024-06-01 19:22:42,727] 93 INFO - start: process data
+[2024-06-01 19:22:42,736] 118 INFO - complete: process data
+[2024-06-01 19:22:42,737] 66 INFO - start: clean data
+[2024-06-01 19:22:42,794] 82 INFO - dropped columns: []
+[2024-06-01 19:22:42,794] 84 INFO - complete: clean data
+[2024-06-01 19:22:42,795] 52 INFO - start: train, test data split
+[2024-06-01 19:22:42,801] 56 INFO - complete: train, test data split
+[2024-06-01 19:22:42,852] 143 INFO - complete: data ingestion
+[2024-06-01 19:22:42,857] 94 INFO - Start: Data Validation
+[2024-06-01 19:22:42,992] 120 INFO - Complete: Data Validation
+[2024-06-01 19:22:42,993] 129 INFO - Start: Data transformation for training
+[2024-06-01 19:22:43,500] 163 INFO - Complete: Data Transformation
+[2024-06-01 19:22:43,501] 137 INFO - Start: Model Training and evaluation
+[2024-06-01 19:23:09,668] 31 INFO - START: MODEL PREDICTION
+[2024-06-01 19:23:09,668] 128 INFO - start: data ingestion
+[2024-06-01 19:23:09,668] 17 INFO - start: data load from mongoDB
+[2024-06-01 19:23:15,376] 42 INFO - complete: data load from mongoDB
+[2024-06-01 19:23:15,377] 93 INFO - start: process data
+[2024-06-01 19:23:15,379] 118 INFO - complete: process data
+[2024-06-01 19:23:15,379] 66 INFO - start: clean data
+[2024-06-01 19:23:15,379] 84 INFO - complete: clean data
+[2024-06-01 19:23:15,788] 143 INFO - complete: data ingestion
+[2024-06-01 19:23:15,789] 94 INFO - Start: Data Validation
+[2024-06-01 19:23:16,539] 120 INFO - Complete: Data Validation
+[2024-06-01 19:23:16,540] 152 INFO - Start: Data Transformation for prediction
+[2024-06-01 19:23:17,358] 163 INFO - Complete: Data Transformation
+[2024-06-01 19:23:17,358] 64 INFO - Start: Model prediction
+[2024-06-01 19:23:26,974] 85 INFO - Complete: Model Prediction
+[2024-06-01 19:23:26,974] 39 INFO - END: MODEL PREDICTION
