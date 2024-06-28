@@ -1,7 +1,0 @@
-[2024-06-27 19:07:54,116] 31 INFO - START: MODEL TRAINING
-[2024-06-27 19:07:54,116] 128 INFO - start: data ingestion
-[2024-06-27 19:07:54,116] 17 INFO - start: data load from mongoDB
-[2024-06-27 19:08:01,956] 1278 INFO - Found credentials in shared credentials file: ~/.aws/credentials
-[2024-06-27 19:08:05,244] 31 INFO - START: MODEL PREDICTION
-[2024-06-27 19:08:05,244] 128 INFO - start: data ingestion
-[2024-06-27 19:08:05,244] 17 INFO - start: data load from mongoDB
