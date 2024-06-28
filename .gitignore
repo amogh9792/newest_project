@@ -1,3 +1,4 @@
 virtual_environment/
 __pycache__/
 artifact
+test-tcc-artifact/
