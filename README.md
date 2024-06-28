@@ -42,7 +42,7 @@ The project solution comprises the following components:
 - Data Preprocessing and Cleaning
 - Machine Learning Model Development
 - Model Evaluation and Performance Metrics
-- Deployment on AWS Lambda and S3
+- Deployment on AWS EC2
 - CI/CD with GitHub Actions
 
 Feel free to explore the project repository for detailed code implementation and instructions on running the Telco Customer Churn Prediction solution! #DataScience #MachineLearning #CustomerChurnPrediction #AWS #GitHubActions
