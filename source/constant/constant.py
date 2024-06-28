@@ -66,7 +66,7 @@ FINAL_MODEL_FILE_NAME = 'GradientBoostingClassifier.pkl'
 
 # AWS CONSTANT
 
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_KEY = os.environ['AWS_SECRET_KEY']
 AWS_REGION = os.environ['AWS_REGION']
 
