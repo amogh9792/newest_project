@@ -9,6 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from uvicorn import run as app_run
 from source.constant.constant import APP_PORT, APP_POST
 
+# uvicorn main:app --host 127.0.0.1 --port 8000
+
 app = FastAPI()
 origins = ['*']
 
@@ -68,6 +70,8 @@ def main(pipeline_type):
         print(e)
         logging.info(e)
 
+
 if __name__ == '__main__':
+
     app_run(app, host = APP_POST, port = APP_PORT)
 
