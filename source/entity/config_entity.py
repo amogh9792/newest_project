@@ -6,7 +6,7 @@ class PipelineConfig:
     def __init__(self, global_timestamp):
 
         self.aws_access_key = constant.AWS_ACCESS_KEY_ID
-        self.aws_secret_key = constant.AWS_SECRET_ACCESS_KEY
+        self.aws_secret_access_key = constant.AWS_SECRET_ACCESS_KEY
         self.aws_region = constant.AWS_REGION
         self.aws_bucket_name = constant.AWS_BUCKET_NAME
         self.aws_bucket_prefix = constant.AWS_BUCKET_PREFIX

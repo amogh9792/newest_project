@@ -70,9 +70,10 @@ class ModelTrainEvaluate:
         try:
             x_train = train_data.drop('Churn', axis=1)
             y_train = train_data['Churn']
-            test_data = test_data.drop(test_data.index[-2:])
             x_test = test_data.drop('Churn', axis=1)
+            x_test = x_test.drop(x_test.index[-3:])
             y_test = test_data['Churn']
+            y_test = y_test.drop(y_test.index[-3:])
 
             # dir_path = os.path.dirname(self.utility_config.model_path)
             # os.makedirs(dir_path, exist_ok=True)
@@ -110,9 +111,10 @@ class ModelTrainEvaluate:
         try:
             x_train = train_data.drop('Churn', axis=1)
             y_train = train_data['Churn']
-            test_data = test_data.drop(test_data.index[-2:])
             x_test = test_data.drop('Churn', axis=1)
+            x_test = x_test.drop(x_test.index[-3:])
             y_test = test_data['Churn']
+            y_test = y_test.drop(y_test.index[-3:])
 
             best_params, best_score = hyperparameter_tuning(x_train, y_train)
 

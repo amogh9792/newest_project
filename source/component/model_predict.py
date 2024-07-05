@@ -64,6 +64,7 @@ class ModelPrediction:
         logging.info("Start: Model prediction")
 
         # predict_data = import_csv_file(self.utility_config.predict_file, self.utility_config.predict_dt_file_path)
+
         predict_data = read_csv_from_s3(self.utility_config.aws_bucket_name, self.utility_config.predict_dt_file_path+'/'+self.utility_config.predict_file)
 
         predict_data = self.clean_data(predict_data)
