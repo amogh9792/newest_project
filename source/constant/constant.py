@@ -6,7 +6,6 @@ APP_PORT = 8000
 # Common constants
 TARGET_COLUMN = 'Churn'
 TRAIN_PIPELINE_NAME = 'train'
-# ARTIFACT_DIR = 'artifact'
 ARTIFACT_DIR = 'test-tcc-artifact'
 FILE_NAME = 'train_data.csv'
 
